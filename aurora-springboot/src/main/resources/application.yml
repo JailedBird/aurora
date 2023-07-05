@@ -5,9 +5,9 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://mysql的ip:3306/aurora?serverTimezone=Asia/Shanghai&allowMultiQueries=true
-    username: 账号
-    password: 密码
+    url: jdbc:mysql://localhost:3306/aurora?serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: root
     hikari:
       minimum-idle: 10
       idle-timeout: 180000
@@ -19,9 +19,9 @@ spring:
       connection-test-query: SELECT 1
 
   redis:
-    host: redis的ip
+    host: 127.0.0.1
     port: 6379
-    password: 密码
+    password: root
     database: 0
     lettuce:
       pool:
@@ -31,10 +31,10 @@ spring:
         max-wait: 10000
 
   rabbitmq:
-    host: rabbitmq的ip
+    host: 127.0.0.1
     port: 5672
-    username: 账号
-    password: 密码
+    username: guest
+    password: guest
     listener:
       simple:
         retry:
@@ -44,7 +44,7 @@ spring:
 
   elasticsearch:
     rest:
-      uris: es的ip:9200
+      uris: 127.0.0.1:9200
 
   mail:
     host: smtp.163.com

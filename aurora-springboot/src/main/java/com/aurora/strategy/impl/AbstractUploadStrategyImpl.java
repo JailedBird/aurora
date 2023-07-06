@@ -17,7 +17,13 @@ public abstract class AbstractUploadStrategyImpl implements UploadStrategy {
             String md5 = FileUtil.getMd5(file.getInputStream());
             String extName = FileUtil.getExtName(file.getOriginalFilename());
             String fileName = md5 + extName;
-            if (!exists(path + fileName)) {
+            Boolean hasExist = false;
+            try {
+                hasExist = exists(path + fileName);
+            } catch (Exception e) {
+                hasExist = false;
+            }
+            if (!hasExist) {
                 upload(path, fileName, file.getInputStream());
             }
             return getFileAccessUrl(path + fileName);
